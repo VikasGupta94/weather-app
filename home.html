@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+    *{margin:0;
+    padding:0;}
+    
+    .box{background-color:rgb(41, 206, 247);
+    max-width:300px;
+    height:500px;
+    margin:auto;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 2px 2px 3px grey;
+    border-radius: 10px;
+    }
+    .wave{width: 50rem;
+    height:50rem;
+    position: absolute;
+    top:120%;
+    left:30%;
+    margin-left: -25rem;
+    margin-top: -25rem;
+    
+    background-color:rgba(0, 0, 255, 0.295);
+    border-radius: 40%;}
+    .-one{background-color: aqua;
+    z-index: 1;
+    opacity: .5;
+    animation:drift 2.4s infinite linear;}
+    .-two{background-color: rgb(8, 215, 252);
+        z-index: 2;
+        opacity: .5;
+        animation:drift 3s infinite linear;}
+        .-three{background-color: rgb(0, 255, 255);
+            z-index: 3;
+            opacity: .1;
+            animation:drift 2s infinite linear;}
+    
+            @keyframes drift{from{transform:rotate(0deg);}
+        from{transform:rotate(360deg);}}
+        .weathericon{
+    position: absolute;
+    top:0;
+    left:0;
+    
+            width:100%;
+            height:240px;
+          
+        }
+        .info{position: absolute;
+            bottom:0;
+            z-index: 11;
+            left:0;
+            width:100%;
+            height:261px;
+            margin-top: 0px;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+        }
+        .info div{text-align: center;}</style>
+</head>
+
+<body>
+    <div class="box">
+      
+
+
+        <div class="weathericon">
+            
+        </div>
+        <div class="info">
+            <div>
+                <h1 class="location">{%city%},{%country%}</h1>
+                <p id="date"></p>
+            </div>
+            <div>
+            <h1 class="temp">{%temp%}c</h1>
+            <h3 class="tempmin-max">min {%min%}c | max {%max%}c</h3>
+            </div>
+        </div>
+        <div class="wave -one"></div>
+        <div class="wave -two"></div>
+        <div class="wave -three"></div>
+    </div>
+    </div>
+
+
+<script>
+    let date1=document.getElementById('date');
+    const d = new Date();
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    date1.innerText=`${days[d.getDay()]} | ${months[d.getMonth()]} ${d.getUTCDate()} | ${d.getHours()}:${d.getMinutes()}GMT+05:30`;
+    
+    </script>
+
+</body>
+
+</html>
